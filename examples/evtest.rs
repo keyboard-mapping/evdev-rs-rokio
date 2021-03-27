@@ -1,7 +1,7 @@
-use evdev_rs::enums::*;
-use evdev_rs::*;
-use std::fs::File;
+use evdev_rs_tokio::enums::*;
+use evdev_rs_tokio::*;
 use std::io;
+use tokio::fs::File;
 
 fn usage() {
     println!("Usage: evtest /path/to/device");
@@ -117,7 +117,8 @@ fn print_sync_dropped_event(ev: &InputEvent) {
     print_event(ev);
 }
 
-fn main() {
+#[tokio::main]
+async fn main() {
     let mut args = std::env::args();
 
     if args.len() != 2 {
@@ -126,7 +127,7 @@ fn main() {
     }
 
     let path = &args.nth(1).unwrap();
-    let f = File::open(path).unwrap();
+    let f = File::open(path).await.unwrap();
 
     let u_d = UninitDevice::new().unwrap();
     let d = u_d.set_file(f).unwrap();

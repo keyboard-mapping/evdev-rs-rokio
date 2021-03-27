@@ -2,10 +2,10 @@ use crate::{AbsInfo, GrabMode, InputEvent, LedState, ReadFlag, ReadStatus, TimeV
 use libc::{c_int, c_uint, c_void};
 use std::any::Any;
 use std::ffi::CString;
-use std::fs::File;
 use std::mem::ManuallyDrop;
 use std::os::unix::io::{AsRawFd, FromRawFd};
 use std::{io, ptr};
+use tokio::fs::File;
 
 use crate::enums::*;
 use crate::util::*;

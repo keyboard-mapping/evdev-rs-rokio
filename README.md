@@ -16,7 +16,7 @@ to enable serialization support, enable the feature "serde"
 ```toml
 # Cargo.toml
 [dependencies]
-evdev-rs = { version = "0.4.0", features = ["serde"] }
+evdev-rs-tokio = { version = "0.4.0", features = ["serde"] }
 ```
 
 Why a libevdev wrapper?
